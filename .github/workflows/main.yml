@@ -24,7 +24,7 @@ jobs:
         # app: CxFlowGitHub
         # Break build based on Checkmarx findings?
         #break_build: # optional
-        #incremental: true
+        incremental: false
         # github_token: ${{secrets.GITHUB_TOKEN}}
 #         extra parameter
 #         params: --bug-tracker=jira --config=cx.config --repo-
