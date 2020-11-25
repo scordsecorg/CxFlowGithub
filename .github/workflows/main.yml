@@ -24,13 +24,13 @@ jobs:
         # app: CxFlowGitHub
         # Break build based on Checkmarx findings?
         #break_build: # optional
-        incremental: false
+        incremental: true
         # github_token: ${{secrets.GITHUB_TOKEN}}
 #         extra parameter
 #         params: --bug-tracker=jira --config=cx.config --repo-
 #         name=Orderweb --namespace= --branch=master --jira.url=${{secrets.JIRA_URL}} --jira.username=${{secrets.JIRA_USER}} --jira.
 #         token=${{secrets.JIRA_TOKEN}}
-##    - name: Upload SARIF file
-##      uses: github/codeql-action/upload-sarif@v1
-##      with:
-##        sarif_file: cx.sarif
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: cx.sarif
