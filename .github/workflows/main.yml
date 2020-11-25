@@ -19,9 +19,9 @@ jobs:
         checkmarx_url: ${{ secrets.CX_SERVER }}        
         checkmarx_username: ${{secrets.CX_USER}}
         checkmarx_password: ${{secrets.CX_PASSWD}}
-        checkmarx_client_secret: ${{secrets.CX_CLIENT_SECRET}}
-        #app: CxFlowGitHub
+        checkmarx_client_secret: ${{secrets.CX_CLIENT_SECRET}}        
         preset: 'High and Medium'
+        # app: CxFlowGitHub
         # Break build based on Checkmarx findings?
         #break_build: # optional
         #incremental: true
