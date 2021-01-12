@@ -50,14 +50,14 @@ function decQuantity (prodid) {
 		// Dont need to do anything else
 			
 		// Well, apart from checking to see if they've accessed someone elses basket ;)
-		Statement stmt = conn.createStatement();
+		//Statement stmt = conn.createStatement();
                 //Security Fix
                 PreparedStatement preparedStatement = con.prepareStatement(sql);
                 try {
-                        ResultSet rs = stmt.executeQuery("SELECT * FROM Baskets WHERE basketid = " + basketId);
-                        /* String sql = "SELECT * FROM Baskets WHERE basketid =?");
+                        //ResultSet rs = stmt.executeQuery("SELECT * FROM Baskets WHERE basketid = " + basketId);
+                        String sql = "SELECT * FROM Baskets WHERE basketid =?");
                         preparedStatement.setString(1, basketId);
-                        ResetSet rs = preparedStatement.executeQuery(); */
+                        ResetSet rs = preparedStatement.executeQuery();
 			rs.next();
 			String bUserId = "" + rs.getInt("userid");
 			if ((userid == null && ! bUserId.equals("0")) || (userid != null && userid.equals(bUserId))) {
@@ -78,7 +78,7 @@ function decQuantity (prodid) {
 
 	} else if (userid == null) {
 		// Not logged in, and no basket, so create one
-		Statement stmt = conn.createStatement();
+		//Statement stmt = conn.createStatement();
 		try {
 			Timestamp ts = new Timestamp((new java.util.Date()).getTime());
 			stmt.execute("INSERT INTO Baskets (created) VALUES ('" + ts + "')");
