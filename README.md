@@ -40,4 +40,4 @@ You can now also perform automated security regression tests on the Bodge It Sto
 
 Any feedback (or offers of help to develop it further;) would be appreciated.
 
-CxFlow - Change to github demo R1.0 .
+CxFlow - Change to github demo R1.0.
