@@ -1,0 +1,39 @@
+# Controls when the action will run. Triggers the workflow on push or pull request or on schedule
+# * is a special character in YAML so you have to quote this string
+# Everyday each 5 minutes
+name: "Checkmarx SAST Scan - Manual"
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Checkmarx CxFlow Action
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1 #Github Action version
+      with:
+        project: test-schedule
+        team: '/CxServer'
+        checkmarx_url: ${{ secrets.CX_SERVER }}        
+        checkmarx_username: ${{secrets.CX_USER}}
+        checkmarx_password: ${{secrets.CX_PASSWD}}
+        checkmarx_client_secret: ${{secrets.CX_CLIENT_SECRET}}        
+        preset: 'High and Medium'
+        # app: CxFlowGitHub
+        # Break build based on Checkmarx findings?
+        #break_build: # optional
+        incremental: false
+        scanners: sast
+        bug_tracker: Sarif
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --forcescan=true
+        # github_token: ${{secrets.GITHUB_TOKEN}}
+#         extra parameter
+#         params: --cx-flow.filter-status="New" --bug-tracker=jira --config=cx.config --repo-
+#         name=Orderweb --namespace= --branch=master --jira.url=${{secrets.JIRA_URL}} --jira.username=${{secrets.JIRA_USER}} --jira.
+#         token=${{secrets.JIRA_TOKEN}}
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: cx.sarif
