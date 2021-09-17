@@ -27,7 +27,7 @@ jobs:
         incremental: false
         scanners: sast
         bug_tracker: Sarif
-        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --cx-flow.filter-severity=high,low --logging.level.com.checkmarx.flow.service=debug --logging.level.com.checkmarx.flow.utils=debug --logging.level.com.checkmarx.sdk.service=debug
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --cx-flow.filter-severity=high,medium --logging.level.com.checkmarx.flow.service=debug --logging.level.com.checkmarx.flow.utils=debug --logging.level.com.checkmarx.sdk.service=debug
         # github_token: ${{secrets.GITHUB_TOKEN}}
 #         extra parameter
 #         params: --cx-flow.filter-status="New" --bug-tracker=jira --config=cx.config --repo-
