@@ -27,7 +27,10 @@ import javax.crypto.spec.SecretKeySpec;
        private SecretKey key;
        private Cipher cipher = Cipher.getInstance(CIPHER_TRANSFORMATION);
        private byte[] ivBytes = new byte[KEY_SIZE_BITS/8];
-     
+       
+       //low issue intriduced by SAC
+       public Map<String, String> env = System.getenv();
+      
        public AES() throws NoSuchAlgorithmException, NoSuchPaddingException, NoSuchProviderException, InvalidParameterSpecException, InvalidKeyException, InvalidAlgorithmParameterException{
            KeyGenerator kgen = KeyGenerator.getInstance(KEY_TYPE);
            kgen.init(KEY_SIZE_BITS); 
