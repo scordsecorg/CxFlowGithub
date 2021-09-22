@@ -61,9 +61,14 @@ function decQuantity (prodid) {
 			////String sql = "SELECT * FROM Baskets WHERE basketid =?");
                         ////preparedStatement.setString(1, basketId);
                         ////ResetSet rs = preparedStatement.executeQuery();
-			
+						
 			rs.next();
+			
+                        ResultSet rs2 = stmt.executeQuery("SELECT * FROM Baskets WHERE basketid = "+ basketId +" OR basketid = "+ basketid + "2");
+			rs2.next();
+
 			String bUserId = "" + rs.getInt("userid");
+			String bUserId2 = "" + rs2.getInt("userid");
 			if ((userid == null && ! bUserId.equals("0")) || (userid != null && userid.equals(bUserId))) {
 				conn.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'OTHER_BASKET'");
 			}
