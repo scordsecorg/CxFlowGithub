@@ -11,10 +11,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-#    - name: Checkmarx CxFlow Action
+    - name: Checkmarx CxFlow Action
 #      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1 #Github Action version
+      uses: cx-scord/checkmarx-cxflow-github-action@v1.2      
       with:
-        uses: cx-scord/checkmarx-cxflow-github-action@v1.2
 #        ref: refs/tags/v1.2
         project: test-manual
         team: '/CxServer'
