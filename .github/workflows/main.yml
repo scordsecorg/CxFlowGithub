@@ -3,7 +3,9 @@ name: CxFlow
 # Controls when the action will run. Triggers the workflow on push or pull request
 on:
   push:
-    branches: [ master ]
+    branches:
+    - main
+    - master
 
 jobs:
   build:
@@ -12,19 +14,22 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Checkmarx CxFlow Action
-      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.0-9.x
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.3
       with:
-        project: CxFlowGithub-master
-        team: '/CxServer/cx-scord'
+        project: CxFlowGithub-Sainsbury
+        team: '/CxServer/'
         checkmarx_url: ${{ secrets.CX_SERVER }}        
         checkmarx_username: ${{secrets.CX_USER}}
         checkmarx_password: ${{secrets.CX_PASSWD}}
         checkmarx_client_secret: ${{secrets.CX_CLIENT_SECRET}}        
         preset: 'High and Medium'
-        # app: CxFlowGitHub
+        app: CxFlowGithub-Sainsbury
         # Break build based on Checkmarx findings?
-        #break_build: # optional
-        incremental: true
+        break_build: true
+        incremental: false
+        scanners: sast
+        bug_tracker: GitHub
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }}
         # github_token: ${{secrets.GITHUB_TOKEN}}
 #         extra parameter
 #         params: --bug-tracker=jira --config=cx.config --repo-
