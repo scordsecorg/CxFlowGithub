@@ -1,4 +1,4 @@
-name: CxFlow
+name: CxFlow - Push
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 on:
