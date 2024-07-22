@@ -71,7 +71,7 @@ public class AdvancedSearch {
     
     //Returns true if its a search request, or false if just a regular page load
     public boolean isSearchRequest(){
-        if(this.parameters.size() > 1)
+        if(this.parameters.size( ) > 1)
             return true;
         return false;
     }
