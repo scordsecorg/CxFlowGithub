@@ -44,7 +44,7 @@ public class AdvancedSearch {
             this.setResults();
             this.setScores();
         } catch (Exception e){
-            this.encryptKey = UUID.randomUUID().toString().substring(0, 16);
+            this.encryptKey = UUID.randomUUID().toString().substring(0,16);
             this.session.setAttribute("key", this.encryptKey);
         }
         this.parameters.put("key", this.encryptKey);
